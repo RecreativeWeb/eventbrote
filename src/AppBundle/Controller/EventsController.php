@@ -17,10 +17,8 @@ class EventsController extends Controller
 	{
 		$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
 		 
-		$templating = $this->container->get('templating');
-
-		$html = $templating->render('events/index.html.twig',compact('events'));
-
-		return new Response($html);
+		return $this->render('events/index.html.twig', [ 
+			'events' => $events
+		]);
 	}
 }
