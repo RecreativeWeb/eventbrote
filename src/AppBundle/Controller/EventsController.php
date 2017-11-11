@@ -15,20 +15,12 @@ class EventsController extends Controller
 	 */
 	public function listeAction()
 	{
-		$event = new Event;
-		$event->setName('Laravel Conference')->setLocation('Quebec, CA')->setPrice(0);
-
-		$em = $this->getDoctrine()->getManager();
-
-		$em->persist($event);
-		$em->flush();
-
-		return new Response('<body><h1>Event created!</h1></body>');
-
-		//$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
+		$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
 		 
-		//return $this->render('events/index.html.twig', [ 
-		//	'listeEvents' => $events
-		//]);
+		$templating = $this->container->get('templating');
+
+		$html = $templating->render('events/index.html.twig',compact('events'));
+
+		return new Response($html);
 	}
 }

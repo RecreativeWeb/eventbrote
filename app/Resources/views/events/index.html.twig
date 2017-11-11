@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<h1>{{listeEvents | length }} Events</h1>
+<h1>{{ events | length }} Events</h1>
 
 <ul>
-	{% for e in listeEvents %}
+	{% for e in events %}
 	<li>{{ e }}</li>	
 	{% endfor %}
 </ul>
