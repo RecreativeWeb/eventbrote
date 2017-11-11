@@ -16,9 +16,7 @@ class EventsController extends Controller
 	public function listeAction()
 	{
 		$event = new Event;
-		$event->setName('Laravel Conference');
-		$event->setLocation('Quebec, CA');
-		$event->setPrice(0);
+		$event->setName('Laravel Conference')->setLocation('Quebec, CA')->setPrice(0);
 
 		$em = $this->getDoctrine()->getManager();
 
