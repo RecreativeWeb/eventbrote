@@ -8,30 +8,11 @@
 
 <h1>{{listeEvents | length }} Events</h1>
 
-{{ heure }}
-
-<br /><br />
-
-{{2+2}}
-
-<br /><br />
-
-{{valeur}}
-
-<ul>
-	<li>Symfony Conference</li>
-	<li>Laravel Conference</li>
-	<li>Django Conference</li>
-	<li>Flask Conference</li>
-</ul>
-
 <ul>
 	{% for e in listeEvents %}
 	<li>{{ e }}</li>	
 	{% endfor %}
 </ul>
-
-{{ "now" |date('d/m/Y H:i:s') }}
 
 </body>
 </html>

@@ -2,10 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Event;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-//use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use DateTime;
+
 
 class EventsController extends Controller
 {
@@ -14,14 +15,22 @@ class EventsController extends Controller
 	 */
 	public function listeAction()
 	{
-		$superSecretCalcul = 2+2*5;
-		$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
-		$currentTime = (new DateTime)->format('d/m/Y H:i:s');
+		$event = new Event;
+		$event->setName('Laravel Conference');
+		$event->setLocation('Quebec, CA');
+		$event->setPrice(0);
 
-		return $this->render('events/index.html.twig', [
-			'valeur' => $superSecretCalcul, 
-			'listeEvents' => $events, 
-			'heure' => $currentTime
-		]);
+		$em = $this->getDoctrine()->getManager();
+
+		$em->persist($event);
+		$em->flush();
+
+		return new Response('<body><h1>Event created!</h1></body>');
+
+		//$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
+		 
+		//return $this->render('events/index.html.twig', [ 
+		//	'listeEvents' => $events
+		//]);
 	}
 }
