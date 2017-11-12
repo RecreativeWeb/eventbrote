@@ -8,14 +8,19 @@
 
 <h1>{{ events | length }} Events</h1>
 
-<ul>
-	{% for e in events %}
-	<li>
-		<strong>{{ e.name }}</strong> in <em>{{ e.location }}</em>: {{ e.price | localizedcurrency('USD') }}
-		<span><i>{{ e.description }}</i></span> 
-	</li>	
-	{% endfor %}
-</ul>
+{% for e in events %}
+<article>
+	<header>
+		<h2>{{ e.name }}</h2>
+	</header>
+	<p>{{ e.description }}</p>
+	<ul>
+		<li>Date:<strong>{{ e.startsAt | date(null,"Europe/Paris") }}</strong></li>
+		<li>Location:<strong>{{ e.location }}</strong></li>
+		<li>Price:<strong>{{ e.price | localizedcurrency('USD') }}</strong></li>
+	</ul>
+</article>	
+{% endfor %}
 
 </body>
 </html>
