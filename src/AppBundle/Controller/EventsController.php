@@ -15,10 +15,14 @@ class EventsController extends Controller
 	 */
 	public function listeAction()
 	{
-		$events = ['Symfony Conference','Laravel Conference','Django Conference','Flask Conference'];
+		$em = $this->getDoctrine()->getManager();
+		//dump($event);
+		//die;
+		
+		$events = $em->getRepository(Event::class)->findAll();
+		//dump($event);
+		//die;
 		 
-		return $this->render('events/index.html.twig', [ 
-			'events' => $events
-		]);
+		return $this->render('events/index.html.twig',compact('events'));
 	}
 }

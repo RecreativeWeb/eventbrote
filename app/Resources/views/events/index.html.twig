@@ -10,7 +10,9 @@
 
 <ul>
 	{% for e in events %}
-	<li>{{ e }}</li>	
+	<li>
+		<strong>{{ e.name }}</strong>in <em>{{ e.location }}</em>: ${{ e.price }}
+	</li>	
 	{% endfor %}
 </ul>
 
