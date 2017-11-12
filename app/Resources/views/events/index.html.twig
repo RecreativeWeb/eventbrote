@@ -11,7 +11,7 @@
 <ul>
 	{% for e in events %}
 	<li>
-		<strong>{{ e.name }}</strong>in <em>{{ e.location }}</em>: ${{ e.price }}
+		<strong>{{ e.name }}</strong>in <em>{{ e.location }}</em>: {{ e.price | localizedcurrency('USD') }}
 	</li>	
 	{% endfor %}
 </ul>
